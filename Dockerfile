@@ -31,8 +31,8 @@ RUN \
 
 # PHP-FPM and other basic packages
 RUN \
-    DEBIAN_FRONTEND=noninteractive apt-get install --allow-unauthenticated -y -q git nano postfix \
-    nginx mariadb-client mariadb-server \
+    DEBIAN_FRONTEND=noninteractive apt-get install --allow-unauthenticated -y -q git nano postfix supervisor \
+    nginx mariadb-client \
     php7.0 php7.0-fpm php7.0-cli php7.0-curl php7.0-mysql php7.0-mbstring php7.0-xml php7.0-zip php7.0-gd php7.0-imap php7.0-dev \
     libpcre3-dev imagemagick build-essential memcached && \
     apt-get clean -y -q && rm -rf /var/lib/apt/lists/*
@@ -46,6 +46,13 @@ COPY root /
 
 WORKDIR /app
 
+RUN mkdir -p /files/private && \
+    mkdir -p /files/temporary && \
+    mkdir -p /files/public
+RUN chown -R www-data:www-data /files
+
+RUN groupadd -r memcached && useradd -r -g memcached memcached
+
 # Port forwarding
 EXPOSE 80 443
 
@@ -54,5 +61,4 @@ EXPOSE 80 443
 ###############
 
 # Start the services
-RUN chmod +x /entrypoint/run.sh
-ENTRYPOINT ["/entrypoint/run.sh"]
+CMD ["/usr/bin/supervisord"]
