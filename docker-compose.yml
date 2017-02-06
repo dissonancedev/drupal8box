@@ -1,6 +1,6 @@
 version: '2'
 services:
-  drupal:
+  front:
     build:
       context: ./
     ports:
@@ -11,8 +11,6 @@ services:
     volumes:
       - ./app:/app
       - ./log:/log
-      - /files/private
-      - /files/temporary
   db:
     image: mariadb:10.1.18
     expose:
@@ -25,8 +23,8 @@ services:
   drush:
     image: drush/drush:8
     volumes_from:
-      - drupal
-  drupalconsole:
+      - front
+  drupal:
     image: drupalconsole/console:1.0
     volumes_from:
-      - drupal
+      - front

@@ -1,4 +1,5 @@
 FROM phusion/baseimage:0.9.19
+MAINTAINER nparasta <nparasta@gmail.com>
 
 ###########################
 ### Basic configuration ###
@@ -31,7 +32,7 @@ RUN \
 
 # PHP-FPM and other basic packages
 RUN \
-    DEBIAN_FRONTEND=noninteractive apt-get install --allow-unauthenticated -y -q git nano postfix supervisor \
+    DEBIAN_FRONTEND=noninteractive apt-get install --allow-unauthenticated -y -q git nano supervisor \
     nginx mariadb-client \
     php7.0 php7.0-fpm php7.0-cli php7.0-curl php7.0-mysql php7.0-mbstring php7.0-xml php7.0-zip php7.0-gd php7.0-imap php7.0-dev \
     libpcre3-dev imagemagick build-essential memcached && \
@@ -52,6 +53,7 @@ RUN mkdir -p /files/private && \
 RUN chown -R www-data:www-data /files
 
 RUN groupadd -r memcached && useradd -r -g memcached memcached
+RUN useradd -u 1000 developer
 
 # Port forwarding
 EXPOSE 80 443
