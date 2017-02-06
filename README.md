@@ -1,22 +1,22 @@
 # Drupal 8 dockerbox
 
 *Drupal 8 dockerbox* is a skeleton that can be used for Drupal 8 development and/or deployment. It includes:
-- Custom docker image running late versions of
+- *front*: Custom docker image running late versions of
   * Nginx
   * PHP-FPM 7.0
-  * MariaDB
   * Memcached
-- Drush image
-- Drupal console image
+- *db*: MariaDB 10.1.*
+- *drush*: Drush image
+- *drupal*: Drupal console image
 
 All is neatly packed in a simple file structure:
 - `app` - where the Drupal 8 application should be located
-- `root` - this folder is mapped into the `/` and can be used to add/overwrite configuration and system files in the Docker container.
+- `root` - this folder is mapped into the `/` and can be used to add/overwrite configuration and system files in the front container.
 
 ## Requirements
 
-- Docker Engine (>=1.12.0) - *[https://docs.docker.com/engine/installation/](Installation instructions)*
-- Docker Compose (>=1.8.0) - *[https://docs.docker.com/compose/install/](Installation instructions)*
+- Docker Engine (>=1.12.0) - [https://docs.docker.com/engine/installation/](Installation instructions)
+- Docker Compose (>=1.8.0) - [https://docs.docker.com/compose/install/](Installation instructions)
 
 ## How to use Drush and Drupal Console
 
