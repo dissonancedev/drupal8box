@@ -15,8 +15,8 @@ All is neatly packed in a simple file structure:
 
 ## Requirements
 
-- Docker Engine (>=1.12.0) - [https://docs.docker.com/engine/installation/](Installation instructions)
-- Docker Compose (>=1.8.0) - [https://docs.docker.com/compose/install/](Installation instructions)
+- Docker Engine (>=1.12.0) - [Installation instructions](https://docs.docker.com/engine/installation/)
+- Docker Compose (>=1.8.0) - [Installation instructions](https://docs.docker.com/compose/install/)
 
 ## How to use Drush and Drupal Console
 
